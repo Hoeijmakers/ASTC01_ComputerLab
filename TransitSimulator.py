@@ -10,30 +10,6 @@ sun_rad = 696340000 # in meter
 au = 149597870691 # in meter
 days_to_hours = 24*60
 
-class Planet:
-    
-    def __init__(self, name, pl_mass, pl_radius, pl_period, pl_semi):
-        self.name = name
-        self.pl_mass = pl_mass # in Jupiter masses
-        self.pl_radius = pl_radius # in Jupiter radii
-        self.pl_period = pl_period # in days
-        self.pl_semi = pl_semi # in AU
-    
-    
-class Star: 
-    def __init__(self, name, st_mass, st_radius):
-        self.name = name
-        self.st_mass = st_mass # in solar masses
-        self.st_radius = st_radius # in solar radii
-        
-        """
-class TransitSystem:
-    def __init__(self, ecc, incl, long):
-        
-        self.ecc = ecc # number
-        self.incl = incl # in degrees
-        self.long = long # in degrees
-"""    
 
 class System:
     def __init__(self, name, pl_mass, pl_radius, pl_period, pl_semi, st_mass, st_radius, ecc, incl, long):
@@ -135,9 +111,9 @@ class System:
     #def TransitMeasurement(self):
 
 
-sys1 = System('WASP-121b', 1.183, 1.865, 3.34, 0.0558, 1.45, 1.5, 0,  np.pi / 2., 0)
+#sys1 = System('WASP-121b', 1.183, 1.865, 3.34, 0.0558, 1.45, 1.5, 0,  np.pi / 2., 0)
 
-sys1.TransitParams()
-sys1.Transit()
+#sys1.TransitParams()
+#sys1.Transit()
 
-print(sys1.delta)
+#print(sys1.delta)
