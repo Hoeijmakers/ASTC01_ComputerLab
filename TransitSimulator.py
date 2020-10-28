@@ -79,7 +79,7 @@ class System:
         y2_data2 = y2_new - np.random.rand(len(y2_new) )/90.
         
                 
-        plt.figure()
+        plt.figure(figsize=(20,20))
         plt.plot(t[np.where(t < -self.tT / 2.)], normalised_brightness[np.where(t < -self.tT / 2.)], 'b--', label='Theoretical Transit Curve')
         plt.plot(t[np.where(t > self.tT / 2.)], normalised_brightness[np.where(t > self.tT / 2.)], 'b--')
         plt.plot(t[np.where((t > -self.tF / 2.) * (t < self.tF / 2.))], dip[np.where((t > -self.tF / 2.) * (t < self.tF / 2.))], 'b--')
