@@ -69,7 +69,7 @@ class RadialVelocity:
 
 
         for t in range(len(self.E_array)):
-            result=keplersolve(ecc, M_array[t], 1e-14)
+            result=keplersolve(self.ecc, M_array[t], 1e-14)
             self.E_array[t]=result
 
 
