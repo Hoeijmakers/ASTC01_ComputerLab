@@ -80,6 +80,7 @@ class System:
         
                 
         plt.figure(figsize=(10,10))
+        plt.title(f'Transit Light Curve of {self.name}')
         plt.plot(t[np.where(t < -self.tT / 2.)], normalised_brightness[np.where(t < -self.tT / 2.)], 'b--', label='Theoretical Transit Curve')
         plt.plot(t[np.where(t > self.tT / 2.)], normalised_brightness[np.where(t > self.tT / 2.)], 'b--')
         plt.plot(t[np.where((t > -self.tF / 2.) * (t < self.tF / 2.))], dip[np.where((t > -self.tF / 2.) * (t < self.tF / 2.))], 'b--')
