@@ -47,8 +47,9 @@ def keplersolve(e,M,precision):
 
 class RadialVelocity:
 
-    def __init__(self, pl_semi, pl_period, ecc, incl, longitude, pl_msini, st_mass, st_dist):
+    def __init__(self, pl_name, pl_semi, pl_period, ecc, incl, longitude, pl_msini, st_mass, st_dist):
 
+        self.name = pl_name
         self.pl_semi = pl_semi
         self.pl_period = pl_period * days_to_seconds 
         self.ecc = ecc
@@ -85,34 +86,36 @@ class RadialVelocity:
         #Radial velocity for each hour / each value of phi 
         self.v_r=K*(np.cos((self.longitude/180.*np.pi)+self.phi_array)+self.ecc*np.cos((self.longitude/180.*np.pi)))
 
+        """
         #Compute the apparent separation and the best hours to observe the planet
         #These are the indices for the fastest and slowest velocities
         index1=np.where(self.v_r == np.max(self.v_r))
-        best1=int(index1[0])
+        best1=np.int(index1[0][0])
+
 
         index2=np.where(self.v_r==np.min(self.v_r))
-        best2=int(index2[0])
+        best2=np.int(index2[0][0])
 
         #these are the best hours on orbit:
         print('The best hours to image the planet (after perihelion) are:', self.day_arr[best1], self.day_arr[best2])
         #print phi_array[best1]*180/np.pi, phi_array[best2]*180/np.pi
 
         #These are the corresponding separations:
-        r_best1_au=a*(1-ecc*np.cos(self.E_array[best1]))
-        r_best2_au=a*(1-ecc*np.cos(self.E_array[best2]))
+        r_best1_au=self.pl_semi*(1-self.ecc*np.cos(self.E_array[best1]))
+        r_best2_au=self.pl_semi*(1-self.ecc*np.cos(self.E_array[best2]))
 
-        r_best1_arcsec=r_best1_au/distance
-        r_best2_arcsec=r_best2_au/distance
+        r_best1_arcsec=r_best1_au/self.st_dist
+        r_best2_arcsec=r_best2_au/self.st_dist
 
         print('The corresponding separations [in AU] are:', r_best1_au,r_best2_au)
         print('The projected separations [in arcsec] are:',r_best1_arcsec,r_best2_arcsec)
+        """
 
-
-        plt.figure()
+        plt.figure(figsize=(10,5))
         plt.plot(self.day_arr/self.pl_period, self.v_r)
-        plt.title('Radial Velocity Curve')
+        plt.title(f'Radial Velocity Curve of {self.name}')
         plt.xlabel('Phase')
-        plt.ylabel('Radial velocity [m/s]')
+        plt.ylabel('Radial velocity')
         plt.show()
 
 
