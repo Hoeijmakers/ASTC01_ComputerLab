@@ -47,13 +47,12 @@ def keplersolve(e,M,precision):
 
 class RadialVelocity:
 
-    def __init__(self, pl_name, pl_semi, pl_period, ecc, incl, longitude, pl_msini, st_mass, st_dist):
+    def __init__(self, pl_name, pl_semi, pl_period, ecc, longitude, pl_msini, st_mass, st_dist):
 
         self.name = pl_name
         self.pl_semi = pl_semi
         self.pl_period = pl_period * days_to_seconds 
         self.ecc = ecc
-        self.incl = incl
         self.longitude = longitude
         self.pl_msini = pl_msini
         self.st_mass = st_mass
@@ -79,9 +78,7 @@ class RadialVelocity:
 
     def RadialVelocityCurve(self):
 
-        K_term1=((self.pl_msini*jupiter_mass_to_kg)/(self.pl_msini*jupiter_mass_to_kg+self.st_mass*solar_mass_to_kg))
-        K_term2=(self.pl_semi*au_to_meter*np.sin(self.incl/180.*np.pi))/(np.sqrt(1.-self.ecc*self.ecc))
-        K=K_term1*K_term2*np.sqrt(G)
+        K = np.sqrt(G*self.st_mass*solar_mass_to_kg / (self.pl_semi*au_to_meter)) * (self.pl_msini *jupiter_mass_to_kg) / (self.st_mass * solar_mass_to_kg) 
 
         #Radial velocity for each hour / each value of phi 
         self.v_r=K*(np.cos((self.longitude/180.*np.pi)+self.phi_array)+self.ecc*np.cos((self.longitude/180.*np.pi)))
@@ -111,13 +108,14 @@ class RadialVelocity:
         print('The projected separations [in arcsec] are:',r_best1_arcsec,r_best2_arcsec)
         """
 
-        plt.figure(figsize=(10,5))
-        plt.plot(self.day_arr/self.pl_period, self.v_r)
-        plt.title(f'Radial Velocity Curve of {self.name}')
-        plt.xlabel('Phase')
-        plt.ylabel('Radial velocity')
+        plt.figure(figsize=(15,7.5))
+        plt.plot(self.day_arr/self.pl_period, 0.001*self.v_r)
+        plt.title(f'Radial Velocity Curve of {self.name}', size=25)
+        plt.xlabel(r'Phase after $T_{\rm Periastron}$', size=20)
+        plt.ylabel('Radial velocity [km/s]', size=20)
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
         plt.show()
-
 
 
 

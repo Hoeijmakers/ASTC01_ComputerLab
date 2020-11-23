@@ -80,7 +80,7 @@ class System:
         
                 
         plt.figure(figsize=(10,10))
-        plt.title(f'Transit Light Curve of {self.name}')
+        plt.title(f'Transit Light Curve of {self.name}', size=25)
         plt.plot(t[np.where(t < -self.tT / 2.)], normalised_brightness[np.where(t < -self.tT / 2.)], 'b--', label='Theoretical Transit Curve')
         plt.plot(t[np.where(t > self.tT / 2.)], normalised_brightness[np.where(t > self.tT / 2.)], 'b--')
         plt.plot(t[np.where((t > -self.tF / 2.) * (t < self.tF / 2.))], dip[np.where((t > -self.tF / 2.) * (t < self.tF / 2.))], 'b--')
@@ -95,15 +95,14 @@ class System:
         plt.plot(x1_new, y1_data2, 'g.')
         plt.plot(x2_new, y2_data1, 'g.')
         plt.plot(x2_new, y2_data2, 'g.')
-   
-
-
-
-
         plt.plot(x_1, y_1, 'bo--')
         plt.plot(x_2, y_2, 'bo--')
-        plt.legend()
-        
+        plt.legend(size=20)
+        plt.xticks(fontsize=15)
+        plt.yticks(fontsize=15)
+        plt.xlabel('Transit Times [min]', size=20)
+        plt.ylabel('Normalised flux', size=20)
+
         plt.ylim((dip[0]-0.02, normalised_brightness[0] + 0.02))
         plt.show()
         
