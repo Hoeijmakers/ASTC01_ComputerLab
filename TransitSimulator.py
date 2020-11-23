@@ -97,7 +97,7 @@ class System:
         plt.plot(x2_new, y2_data2, 'g.')
         plt.plot(x_1, y_1, 'bo--')
         plt.plot(x_2, y_2, 'bo--')
-        plt.legend(size=20)
+        plt.legend(fontsize=20)
         plt.xticks(fontsize=15)
         plt.yticks(fontsize=15)
         plt.xlabel('Transit Times [min]', size=20)
@@ -111,7 +111,7 @@ class System:
     #def TransitMeasurement(self):
 
 
-#sys1 = System('WASP-121b', 1.183, 1.865, 3.34, 0.0558, 1.45, 1.5, 0,  np.pi / 2., 0)
+#ys1 = System('WASP-121b', 1.183, 1.865, 3.34, 0.0558, 1.45, 1.5, 0,  np.pi / 2., 0)
 
 #sys1.TransitParams()
 #sys1.Transit()
