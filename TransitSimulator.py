@@ -103,7 +103,7 @@ class System:
         plt.xlabel('Transit Times [min]', size=20)
         plt.ylabel('Normalised flux', size=20)
 
-        plt.ylim((dip[0]-0.02, normalised_brightness[0] + 0.02))
+        plt.ylim((dip[0]-0.002, normalised_brightness[0] + 0.002))
         plt.show()
         
         
