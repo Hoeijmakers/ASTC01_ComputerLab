@@ -62,10 +62,10 @@ class RadialVelocity:
     def Kepler(self):
 
         arr_size = self.pl_period
-        self.day_arr=np.arange(arr_size+1,dtype=np.float)        #these are the hours on orbit counting from periastron
-        M_array=np.arange(arr_size+1,dtype=np.float)        # mean anomaly array
+        self.day_arr=np.arange(arr_size+1,dtype=float)        #these are the hours on orbit counting from periastron
+        M_array=np.arange(arr_size+1,dtype=float)        # mean anomaly array
         M_array=2.*np.pi/self.pl_period*M_array             #this is an array for the fraction of the orbit based on mean anomaly
-        self.E_array=np.arange(arr_size+1,dtype=np.float)   #this is the array for the eccentric anomaly 
+        self.E_array=np.arange(arr_size+1,dtype=float)   #this is the array for the eccentric anomaly 
 
 
         for t in range(len(self.E_array)):
