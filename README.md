@@ -1,6 +1,6 @@
 # ASTC01_ComputerLab
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bprinoth/ASTC01_ComputerLab/main)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Hoeijmakers/ASTC01_ComputerLab/main?labpath=runfile.ipynb)
 
 ## Introduction
 
